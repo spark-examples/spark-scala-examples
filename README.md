@@ -4,7 +4,7 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
 
 ## Spark RDD Examples
   - [How to create an RDD](https://sparkbyexamples.com/spark/different-ways-to-create-spark-rdd/)
-  - [How to create an empty RDD] (https://sparkbyexamples.com/spark/spark-how-to-create-an-empty-rdd/)
+  - [How to create an empty RDD](https://sparkbyexamples.com/spark/spark-how-to-create-an-empty-rdd/)
 ## Spark DataFrame Examples
 
 ## Spark SQL Function Examples
