@@ -1,0 +1,14 @@
+.idea
+.metadata
+.cache-main
+.classpath
+.project
+.settings
+*.class
+*.orig
+*.log
+target/
+.DS_Store
+*.iml
+scalastyle-output.xml
+

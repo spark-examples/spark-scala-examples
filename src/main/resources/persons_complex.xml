@@ -1,0 +1,44 @@
+<persons>
+    <person id="1">
+        <firstname>James</firstname>
+        <lastname>Smith</lastname>
+        <middlename></middlename>
+        <dob_year>1980</dob_year>
+        <dob_month>1</dob_month>
+        <gender>M</gender>
+        <salary currency="Euro">10000</salary>
+        <addresses>
+            <address type="home">
+                <addressLine>1 capler dr</addressLine>
+                <city>new york</city>
+                <state>NY</state>
+            </address>
+            <address type="work">
+                <addressLine>455 catalina dr</addressLine>
+                <city>chicago</city>
+                <state>IL</state>
+            </address>
+        </addresses>
+    </person>
+    <person id="2">
+        <firstname>Michael</firstname>
+        <lastname></lastname>
+        <middlename>Rose</middlename>
+        <dob_year>1990</dob_year>
+        <dob_month>6</dob_month>
+        <gender>M</gender>
+        <salary currency="Dollor">10000</salary>
+        <addresses>
+            <address type="home">
+                <addressLine>2345 pasadena village</addressLine>
+                <city>orlando</city>
+                <state>FL</state>
+            </address>
+            <address type="work">
+                <addressLine>3 walnut dr</addressLine>
+                <city>wilmington</city>
+                <state>DE</state>
+            </address>
+        </addresses>
+    </person>
+</persons>

@@ -1,0 +1,17 @@
+<Records>
+    <Rec>
+        <Name>John</Name>
+        <Age>10</Age>
+        <Gender>M</Gender>
+    </Rec>
+    <Rec>
+        <Name>Jenny</Name>
+        <Age>12</Age>
+        <Gender>F</Gender>
+    </Rec>
+    <Rec>
+        <Name>Janardhan</Name>
+        <Age>14</Age>
+        <Gender>M</Gender>
+    </Rec>
+</Records>

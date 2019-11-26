@@ -1,0 +1,7 @@
+TotalCost|BirthDate|Gender|TotalChildren|ProductCategoryName
+1000||Male|2|Technology
+2000|1957-03-06||3|Beauty
+3000|1959-03-06|Male||Car
+4000|1953-03-06|Male|2|
+5000|1957-03-06|Female|3|Beauty
+6000|1959-03-06|Male|4|Car

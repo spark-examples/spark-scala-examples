@@ -1,0 +1,44 @@
+<persons>
+    <person id="1">
+        <firstname>James</firstname>
+        <lastname>Smith</lastname>
+        <middlename></middlename>
+        <dob_year>1980</dob_year>
+        <dob_month>1</dob_month>
+        <gender>M</gender>
+        <salary currency="Euro">10000</salary>
+        <addresses>
+            <address>
+                <street>123 ABC street</street>
+                <city>NewJersy</city>
+                <state>NJ</state>    
+            </address>
+            <address>
+                <street>456 apple street</street>
+                <city>newark</city>
+                <state>DE</state>    
+            </address>    
+        </addresses>    
+    </person>
+    <person id="2">
+        <firstname>Michael</firstname>
+        <lastname></lastname>
+        <middlename>Rose</middlename>
+        <dob_year>1990</dob_year>
+        <dob_month>6</dob_month>
+        <gender>M</gender>
+        <salary currency="Dollor">10000</salary>
+        <addresses>
+            <address>
+                <street>4512 main st</street>
+                <city>new york</city>
+                <state>NY</state>    
+            </address>
+            <address>
+                <street>4367 orange st</street>
+                <city>sandiago</city>
+                <state>CA</state>    
+            </address>    
+        </addresses>            
+    </person>
+</persons>
