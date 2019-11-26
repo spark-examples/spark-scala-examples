@@ -3,7 +3,7 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
 # Table of Contents (Spark Examples in Scala)
 
 ## Spark RDD Examples
-  - [How to create an RDD] (https://sparkbyexamples.com/spark/different-ways-to-create-spark-rdd/)
+  - [How to create an RDD](https://sparkbyexamples.com/spark/different-ways-to-create-spark-rdd/)
   - [How to create an empty RDD] (https://sparkbyexamples.com/spark/spark-how-to-create-an-empty-rdd/)
 ## Spark DataFrame Examples
 
