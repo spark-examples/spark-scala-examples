@@ -10,17 +10,22 @@ object WordCountExample {
 
     val spark:SparkSession = SparkSession.builder()
       .master("local[3]")
-      .appName("SparkByExample")
+      .appName("SparkByExamples.com")
       .getOrCreate()
 
     val sc = spark.sparkContext
 
     val rdd:RDD[String] = sc.textFile("src/main/resources/test.txt")
+    println("initial partition count:"+rdd.getNumPartitions)
 
-    // rdd.collect
+    val reparRdd = rdd.repartition(4)
+    println("re-partition count:"+reparRdd.getNumPartitions)
+
+    //rdd.coalesce(3)
+
     rdd.collect().foreach(println)
 
-    // rdd flatMap
+    // rdd flatMap transformation
     val rdd2 = rdd.flatMap(f=>f.split(" "))
     rdd2.foreach(f=>println(f))
 
@@ -28,21 +33,20 @@ object WordCountExample {
     val rdd3:RDD[(String,Int)]= rdd2.map(m=>(m,1))
     rdd3.foreach(println)
 
-    //Filter
+    //Filter transformation
     val rdd4 = rdd3.filter(a=> a._1.startsWith("a"))
     rdd4.foreach(println)
 
-    //ReduceBy
+    //ReduceBy transformation
     val rdd5 = rdd3.reduceByKey(_ + _)
     rdd5.foreach(println)
 
-    //Swap word,count and sort by key
+    //Swap word,count and sortByKey transformation
     val rdd6 = rdd5.map(a=>(a._2,a._1)).sortByKey()
     println("Final Result")
-    rdd6.foreach(println)
 
     //Action - foreach
-    //rdd6.foreach(println)
+    rdd6.foreach(println)
 
     //Action - count
     println("Count : "+rdd6.count())
@@ -70,10 +74,8 @@ object WordCountExample {
       println("Key:"+ f._1 +", Value:"+f._2)
     })
 
-
+    //Action - saveAsTextFile
     rdd5.saveAsTextFile("c:/tmp/wordCount")
-
-
 
   }
 }
