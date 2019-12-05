@@ -23,6 +23,10 @@ object DayWeekAndWeekMonth extends App {
     to_timestamp(col("input_timestamp")))
     .withColumn("week_day_number", date_format(col("input_timestamp"), "u"))
     .withColumn("week_day_abb", date_format(col("input_timestamp"), "E"))
+    .show(false)
+
+  df.withColumn("input_timestamp",
+    to_timestamp(col("input_timestamp")))
     .withColumn("week_day_full", date_format(col("input_timestamp"), "EEEE"))
     .withColumn("week_of_month", date_format(col("input_timestamp"), "W"))
     .show(false)

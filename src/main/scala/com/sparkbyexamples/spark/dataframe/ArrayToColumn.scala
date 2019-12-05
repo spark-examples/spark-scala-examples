@@ -22,11 +22,11 @@ object ArrayToColumn extends App {
   arrayDF.printSchema()
   arrayDF.show()
 
-  val arrayDFColumn = df.select(
-    df("name") +: (0 until 3).map(i => df("subjects")(i).alias(s"LanguagesKnown$i")): _*
-  )
-
-  arrayDFColumn.show(false)
+//  val arrayDFColumn = df.select(
+//    df("name") +: (0 until 2).map(i => df("subjects")(i).alias(s"LanguagesKnown$i")): _*
+//  )
+//
+//  arrayDFColumn.show(false)
 
   //How to convert Array of Array to column
   val arrayArrayData = Seq(

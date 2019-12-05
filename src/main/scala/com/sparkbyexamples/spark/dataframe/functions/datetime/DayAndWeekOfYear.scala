@@ -19,10 +19,15 @@ object DayAndWeekOfYear extends App {
     ("2019-7-16 16:44:55.406"),
     ("2019-11-16 16:50:59.406")).toDF("input_timestamp")
 
+  //Get Day of the Year example
   df.withColumn("input_timestamp",
     to_timestamp(col("input_timestamp")))
     .withColumn("day_of_year", date_format(col("input_timestamp"), "D"))
-    .withColumn("week_of_year", date_format(col("input_timestamp"), "w"))
+    .show(false)
 
+  //Get Week of the Year example
+  df.withColumn("input_timestamp",
+    to_timestamp(col("input_timestamp")))
+    .withColumn("week_of_year", date_format(col("input_timestamp"), "w"))
     .show(false)
 }
