@@ -21,7 +21,9 @@ object FromJsonFile {
     //read multiline json file
     val multiline_df = spark.read.option("multiline", "true")
       .json("src/main/resources/multiline-zipcode.json")
+    multiline_df.printSchema()
     multiline_df.show(false)
+
 
     //read multiple files
     val df2 = spark.read.json(
