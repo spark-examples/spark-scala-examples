@@ -9,7 +9,7 @@ object FromJsonFile {
 
     val spark: SparkSession = SparkSession.builder()
       .master("local[3]")
-      .appName("SparkByExample")
+      .appName("SparkByExamples.com")
       .getOrCreate()
     val sc = spark.sparkContext
 

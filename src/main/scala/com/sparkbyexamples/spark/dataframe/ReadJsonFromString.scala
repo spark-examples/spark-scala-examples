@@ -32,7 +32,9 @@ object ReadJsonFromString extends App {
   val dfJSON2 = dfFromText.select(from_json(col("value"), schema).as("jsonData"))
     .select("jsonData.*")
 
-  val dfFromCSV:DataFrame = spark.read.option("header",true).csv("src/main/resources/simple_zipcodes.csv")
+  //Read JSON string from CSV file
+  val dfFromCSV:DataFrame = spark.read.option("header",true)
+     .csv("src/main/resources/simple_zipcodes.csv")
   dfFromCSV.printSchema()
   dfFromCSV.show(false)
 
