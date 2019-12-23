@@ -13,16 +13,18 @@ object DataFrameFromCSVFile {
 
     spark.sparkContext.setLogLevel("ERROR")
 
+    //spark read csv file
     val df = spark.read.csv("src/main/resources/zipcodes.csv")
     df.show()
     df.printSchema()
 
-    val df2 = spark.read.options(Map("inferSchema"->"true","sep"->",","header"->"true")).csv("src/main/resources/zipcodes.csv")
+    //read csv with options
+    val df2 = spark.read.options(Map("inferSchema"->"true","delimiter"->",","header"->"true")).csv("src/main/resources/zipcodes.csv")
     df2.show()
     df2.printSchema()
 
+    //read with custom schema
     import org.apache.spark.sql.types._
-
     val schema = new StructType()
       .add("RecordNumber",IntegerType,true)
       .add("Zipcode",IntegerType,true)
@@ -32,7 +34,7 @@ object DataFrameFromCSVFile {
       .add("LocationType",StringType,true)
       .add("Lat",DoubleType,true)
       .add("Long",DoubleType,true)
-      .add("Xaxis",IntegerType,true)
+      .add("Xaxis",DoubleType,true)
       .add("Yaxis",DoubleType,true)
       .add("Zaxis",DoubleType,true)
       .add("WorldRegion",StringType,true)
@@ -40,11 +42,12 @@ object DataFrameFromCSVFile {
       .add("LocationText",StringType,true)
       .add("Location",StringType,true)
       .add("Decommisioned",BooleanType,true)
-      .add("TaxReturnsFiled",StringType,true)
+      .add("TaxReturnsFiled",IntegerType,true)
       .add("EstimatedPopulation",IntegerType,true)
       .add("TotalWages",IntegerType,true)
       .add("Notes",StringType,true)
 
+    //Write dataframe back to csv file
     val df_with_schema = spark.read.format("csv")
       .option("header", "true")
       .schema(schema)
@@ -52,7 +55,6 @@ object DataFrameFromCSVFile {
 
     df_with_schema.printSchema()
     df_with_schema.show(false)
-
 
 
     //Write a csv file
