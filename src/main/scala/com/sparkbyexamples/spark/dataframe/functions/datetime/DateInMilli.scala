@@ -1,7 +1,7 @@
 package com.sparkbyexamples.spark.dataframe.functions.datetime
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions._
+import org.apache.spark.sql.functions.{unix_timestamp, _}
 import org.apache.spark.sql.types.{DateType, LongType, TimestampType}
 
 object DateInMilli extends App{
@@ -29,7 +29,8 @@ object DateInMilli extends App{
 
   //convert date to milliseconds
   df.select(
-    unix_timestamp(col("current_date")).as("unix_milliseconds")
+    unix_timestamp(col("current_date")).as("unix_milliseconds"),
+    unix_timestamp(lit("12-21-2019"),"mm-DD-yyyy").as("unix_milliseconds2")
   ).show(false)
 
 }
