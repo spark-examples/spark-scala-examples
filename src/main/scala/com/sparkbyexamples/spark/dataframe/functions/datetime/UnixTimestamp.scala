@@ -39,4 +39,18 @@ object UnixTimestamp extends App {
   df2.printSchema()
   df2.show(false)
 
+  //Convert unix timestamp to timestamp
+  val timeDF = Seq(1).toDF("seq").select(
+    from_unixtime(unix_timestamp()).as("timestamp_1"),
+    from_unixtime(unix_timestamp(),"MM-dd-yyyy HH:mm:ss").as("timestamp_2"),
+    from_unixtime(unix_timestamp(),"dd-MM-yyyy HH:mm:ss").as("timestamp_3"),
+    from_unixtime(unix_timestamp(),"HH:mm:ss").as("timestamp_4")
+  ).show()
+
+  //Convert unix timestamp to date
+  val dateDF = Seq(1).toDF("seq").select(
+    from_unixtime(unix_timestamp(),"MM-dd-yyyy").as("date_1"),
+    from_unixtime(unix_timestamp(),"dd-MM-yyyy HH:mm:ss").as("date_2"),
+    from_unixtime(unix_timestamp(),"yyyy-MM-dd").as("date_3")
+  ).show(false)
 }
