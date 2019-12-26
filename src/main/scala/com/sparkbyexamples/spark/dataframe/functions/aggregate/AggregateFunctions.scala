@@ -1,6 +1,5 @@
 package com.sparkbyexamples.spark.dataframe.functions.aggregate
 
-import com.sparkbyexamples.spark.dataframe.functions.aggregate.DistinctCount.df
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 
@@ -59,7 +58,8 @@ object AggregateFunctions extends App {
   //last
   df.select(last("salary")).show(false)
 
-  //Exception in thread "main" org.apache.spark.sql.AnalysisException: grouping() can only be used with GroupingSets/Cube/Rollup;
+  //Exception in thread "main" org.apache.spark.sql.AnalysisException:
+  // grouping() can only be used with GroupingSets/Cube/Rollup;
   //df.select(grouping("salary")).show(false)
 
   df.select(kurtosis("salary")).show(false)
@@ -79,5 +79,6 @@ object AggregateFunctions extends App {
 
   df.select(sumDistinct("salary")).show(false)
 
-  df.select(variance("salary"),var_samp("salary"),var_pop("salary")).show(false)
+  df.select(variance("salary"),var_samp("salary"),
+    var_pop("salary")).show(false)
 }
