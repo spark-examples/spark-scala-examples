@@ -1,6 +1,5 @@
 package com.sparkbyexamples.spark.dataframe.functions.window
 
-import com.sparkbyexamples.spark.dataframe.functions.window.WindowGroupbyFirst.{df, w3, w4}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.expressions.Window
@@ -52,10 +51,20 @@ object WindowFunctions extends App {
   df.withColumn("ntile",ntile(2).over(windowSpec))
     .show()
 
+  //cume_dist
+  df.withColumn("cume_dist",cume_dist().over(windowSpec))
+    .show()
+
+  //lag
+  df.withColumn("lag",lag("salary",2).over(windowSpec))
+    .show()
+
+  //lead
+  df.withColumn("lead",lead("salary",2).over(windowSpec))
+    .show()
+
   //Aggregate Functions
-
   val windowSpecAgg  = Window.partitionBy("department")
-
   val aggDF = df.withColumn("row",row_number.over(windowSpec))
   .withColumn("avg", avg(col("salary")).over(windowSpecAgg))
     .withColumn("sum", sum(col("salary")).over(windowSpecAgg))
@@ -64,15 +73,5 @@ object WindowFunctions extends App {
     .where(col("row")===1).select("department","avg","sum","min","max")
     .show()
 
-    //cume_dist
-    df.withColumn("cume_dist",cume_dist().over(windowSpec))
-      .show()
 
-    //lag
-    df.withColumn("lag",lag("salary",2).over(windowSpec))
-      .show()
-
-  //lead
-  df.withColumn("lead",lead("salary",2).over(windowSpec))
-    .show()
 }
