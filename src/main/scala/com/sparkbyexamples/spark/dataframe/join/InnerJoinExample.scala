@@ -38,7 +38,21 @@ object InnerJoinExample extends App {
   println("Inner join")
   empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"inner")
     .show(false)
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"))
+    .show(false)
 
   empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),Inner.sql)
     .show(false)
+
+  empDF.join(deptDF).where(empDF("emp_dept_id") ===  deptDF("dept_id"))
+    .show(false)
+
+  empDF.join(deptDF).filter(empDF("emp_dept_id") ===  deptDF("dept_id"))
+    .show(false)
+
+  empDF.createOrReplaceTempView("EMP")
+  deptDF.createOrReplaceTempView("DEPT")
+
+  val joinDF2 = spark.sql("select * from EMP e INNER JOIN DEPT d ON e.emp_dept_id == d.dept_id")
+  joinDF2.show(false)
 }
