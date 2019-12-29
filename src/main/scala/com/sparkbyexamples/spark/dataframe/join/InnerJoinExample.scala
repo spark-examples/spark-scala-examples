@@ -1,8 +1,9 @@
 package com.sparkbyexamples.spark.dataframe.join
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.catalyst.plans.Inner
 
-object JoinMultipleDataFrames extends App {
+object InnerJoinExample extends App {
 
   val spark: SparkSession = SparkSession.builder()
     .master("local[1]")
@@ -32,4 +33,12 @@ object JoinMultipleDataFrames extends App {
   val deptColumns = Seq("dept_name","dept_id")
   val deptDF = dept.toDF(deptColumns:_*)
   deptDF.show(false)
+
+
+  println("Inner join")
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"inner")
+    .show(false)
+
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),Inner.sql)
+    .show(false)
 }
