@@ -80,5 +80,5 @@ object DataTypeExample extends App{
     .add("id",IntegerType)
     .add("salary",DoubleType)
 
-  anotherSchema.
+
 }
