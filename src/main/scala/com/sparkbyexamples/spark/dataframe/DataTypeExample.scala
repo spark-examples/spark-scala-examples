@@ -54,12 +54,8 @@ object DataTypeExample extends App{
   println("valueContainsNull : "+mapType.valueContainsNull)
   println("productElement : "+mapType.productElement(1))
 
-  //DateType
-  val dateType1 = DateType()
-  val dateType = DataTypes.DateType
-
   //TimestampType
-  val timestampType1 = TimestampType()
+  val timestampType1 = TimestampType
   val timestampType = DataTypes.TimestampType
 
   //StructType
