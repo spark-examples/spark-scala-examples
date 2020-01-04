@@ -28,9 +28,5 @@ object HandleNullExample extends App{
     .na.fill("",Array("type"))
     .show(false)
 
-
-
   // Array and map columns
-
-
 }
