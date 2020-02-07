@@ -9,7 +9,6 @@ object MapTypeExample extends App {
     .master("local[1]")
     .appName("SparkByExamples.com")
     .getOrCreate()
-  import spark.implicits._
 
   //Creating DF with MapType
   val arrayStructureData = Seq(
@@ -39,7 +38,7 @@ object MapTypeExample extends App {
   val mapTypeDF = spark.createDataFrame(
     spark.sparkContext.parallelize(arrayStructureData),arrayStructureSchema)
   mapTypeDF.printSchema()
-  mapTypeDF.show()
+  mapTypeDF.show(false)
 
   mapTypeDF.select(col("name"),map_keys(col("properties"))).show(false)
   mapTypeDF.select(col("name"),map_values(col("properties"))).show(false)
