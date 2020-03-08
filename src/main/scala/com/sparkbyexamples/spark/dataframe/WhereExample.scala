@@ -37,23 +37,23 @@ object WhereExample extends App{
   df.show()
 
   //Condition
-  df.filter(df("state") === "OH")
+  df.where(df("state") === "OH")
     .show(false)
 
   //SQL Expression
-  df.filter("gender == 'M'")
+  df.where("gender == 'M'")
     .show(false)
 
   //multiple condition
-  df.filter(df("state") === "OH" && df("gender") === "M")
+  df.where(df("state") === "OH" && df("gender") === "M")
     .show(false)
 
   //Array condition
-  df.filter(array_contains(df("languages"),"Java"))
+  df.where(array_contains(df("languages"),"Java"))
     .show(false)
 
   //Struct condition
-  df.filter(df("name.lastname") === "Williams")
+  df.where(df("name.lastname") === "Williams")
     .show(false)
 
 }
