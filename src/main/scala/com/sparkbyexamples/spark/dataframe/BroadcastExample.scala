@@ -1,8 +1,8 @@
-package com.sparkbyexamples.spark.rdd
+package com.sparkbyexamples.spark.dataframe
 
 import org.apache.spark.sql.SparkSession
 
-object RDDBroadcast extends App {
+object BroadcastExample extends App{
 
   val spark = SparkSession.builder()
     .appName("SparkByExamples.com")
@@ -21,16 +21,18 @@ object RDDBroadcast extends App {
     ("Maria","Jones","USA","FL")
   )
 
-  val rdd = spark.sparkContext.parallelize(data)
+  val columns = Seq("firstname","lastname","country","state")
+  import spark.sqlContext.implicits._
+  val df = data.toDF(columns:_*)
 
-  val rdd2 = rdd.map(f=>{
-    val country = f._3
-    val state = f._4
+  val df2 = df.map(row=>{
+    val country = row.getString(2)
+    val state = row.getString(3)
+
     val fullCountry = broadcastCountries.value.get(country).get
     val fullState = broadcastStates.value.get(state).get
-    (f._1,f._2,fullCountry,fullState)
-  })
+    (row.getString(0),row.getString(1),fullCountry,fullState)
+  }).toDF(columns:_*)
 
-  println(rdd2.collect().mkString("\n"))
-
+  df2.show(false)
 }

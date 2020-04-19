@@ -68,6 +68,6 @@ object FromJsonFile {
     //Write json file
 
     df2.write
-      .json("/tmp/spark_output/zipcodes.json")
+      .json("/tmp/spark_output/zipcodes1.json")
   }
 }
