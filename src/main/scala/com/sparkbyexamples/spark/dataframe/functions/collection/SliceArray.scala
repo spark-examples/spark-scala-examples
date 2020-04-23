@@ -37,4 +37,6 @@ object SliceArray extends App {
   df.createOrReplaceTempView("PERSON")
   spark.sql("select name, slice(languagesAtSchool,2,3) as NameArray from PERSON")
     .show(false)
+
+
 }
