@@ -2,6 +2,7 @@ package com.sparkbyexamples.spark.dataframe.functions.string
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.{ArrayType, DataType, DataTypes}
 
 object SplitExample extends App{
 
@@ -44,4 +45,11 @@ object SplitExample extends App{
     .show(false)
 
 
+  val splitDF2 = df.withColumn("FirstName",split(col("name"),",").getItem(0))
+    .withColumn("MiddleName",array_join(slice(split(col("name"),","),2,3),"/"))
+
+    .withColumn("NameArray",split(col("name"),","))
+    .drop("name")
+  splitDF2.printSchema()
+  splitDF2.show(false)
 }
