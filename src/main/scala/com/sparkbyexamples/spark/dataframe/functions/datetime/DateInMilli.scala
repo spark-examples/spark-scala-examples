@@ -16,21 +16,21 @@ object DateInMilli extends App{
 
   val df = Seq(1).toDF("seq").select(
     current_date().as("current_date"),
-    unix_timestamp().as("milliseconds")
-    )
+    unix_timestamp().as("unix_timestamp_seconds")
+  )
 
   df.printSchema()
   df.show(false)
 
-  //Convert milliseconds to date
+  //Convert unix seconds to date
   df.select(
-    to_date(col("milliseconds").cast(TimestampType)).as("current_date")
+    to_date(col("unix_timestamp_seconds").cast(TimestampType)).as("current_date")
   ).show(false)
 
-  //convert date to milliseconds
+  //convert date to unix seconds
   df.select(
-    unix_timestamp(col("current_date")).as("unix_milliseconds"),
-    unix_timestamp(lit("12-21-2019"),"mm-DD-yyyy").as("unix_milliseconds2")
+    unix_timestamp(col("current_date")).as("unix_seconds"),
+    unix_timestamp(lit("12-21-2019"),"mm-DD-yyyy").as("unix_seconds2")
   ).show(false)
 
 }

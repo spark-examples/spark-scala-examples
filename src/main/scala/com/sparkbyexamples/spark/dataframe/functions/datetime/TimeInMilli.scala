@@ -16,22 +16,22 @@ object TimeInMilli extends App{
 
   val df = Seq(1).toDF("seq").select(
     current_timestamp().as("current_time"),
-    unix_timestamp().as("milliseconds")
-    )
+    unix_timestamp().as("epoch_time_seconds")
+  )
 
   df.printSchema()
   df.show(false)
 
-  //Convert milliseconds to timestamp
+  //Convert epoch_time to timestamp
   df.select(
-    col("milliseconds").cast(TimestampType).as("current_time"),
-      col("milliseconds").cast("timestamp").as("current_time2")
+    col("epoch_time_seconds").cast(TimestampType).as("current_time"),
+    col("epoch_time_seconds").cast("timestamp").as("current_time2")
   ).show(false)
 
-  //convert timestamp to milliseconds
+  //convert timestamp to Unix epoch time
   df.select(
-    unix_timestamp(col("current_time")).as("unix_milliseconds"),
-    col("current_time").cast(LongType).as("time_to_milli")
+    unix_timestamp(col("current_time")).as("unix_epoch_time"),
+    col("current_time").cast(LongType).as("unix_epoch_time2")
   ).show(false)
 
 }

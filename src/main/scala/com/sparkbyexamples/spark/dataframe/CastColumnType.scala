@@ -4,8 +4,11 @@ import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 
-object CastColumnType extends App{
+import org.apache.spark.sql.{Row, SparkSession}
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
+object CastColumnType extends App{
   val spark: SparkSession = SparkSession.builder()
     .master("local[1]")
     .appName("SparkByExamples.com")
@@ -25,16 +28,15 @@ object CastColumnType extends App{
     StructField("salary", DoubleType, true)
   ))
 
-  val df = spark.createDataFrame(spark.sparkContext.parallelize(simpleData),simpleSchema)
+  val df = spark.createDataFrame(
+    spark.sparkContext.parallelize(simpleData),simpleSchema)
   df.printSchema()
   df.show(false)
 
-  //withColumn with the original column
   val df2 = df.withColumn("age",col("age").cast(StringType))
     .withColumn("isGraduated",col("isGraduated").cast(BooleanType))
     .withColumn("jobStartDate",col("jobStartDate").cast(DateType))
   df2.printSchema()
-
 
   val df3 = df2.selectExpr("cast(age as int) age",
     "cast(isGraduated as string) isGraduated",
@@ -43,8 +45,8 @@ object CastColumnType extends App{
   df3.show(false)
 
   df3.createOrReplaceTempView("CastExample")
-  val df4 = spark.sql("SELECT STRING(age),BOOLEAN(isGraduated),DATE(jobStartDate) from CastExample")
-  df4.printSchema()
-  df4.show(false)
-
-}
+  val df4 = spark.sql("SELECT STRING(age),BOOLEAN(isGraduated), " +
+    "DATE(jobStartDate) from CastExample")
+    df4.printSchema()
+    df4.show(false)
+    }

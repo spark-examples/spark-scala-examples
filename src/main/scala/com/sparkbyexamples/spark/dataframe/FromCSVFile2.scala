@@ -13,6 +13,10 @@ object FromCSVFile2 {
 
     val filePath="src/main/resources/stream.csv"
 
+    val df3 = spark.read.option("header",true).csv("src/main/resources/zipcodes.csv")
+    df3.show(false)
+
+
     val df = spark.read.options(Map("inferSchema"->"true","delimiter"->"|","header"->"true")).csv(filePath)
 
     val df2 = df.select("Gender", "BirthDate", "TotalCost", "TotalChildren", "ProductCategoryName")
