@@ -43,9 +43,11 @@ object FlattenNestedStruct extends App {
   val df2 = df.select(col("name.*"),
     col("address.current.*"),
     col("address.previous.*"))
-  df2.toDF("fname","mename","lname","currAddState",
+
+  val df2Flatten = df2.toDF("fname","mename","lname","currAddState",
     "currAddCity","prevAddState","prevAddCity")
-    .show(false)
+  df2Flatten.printSchema()
+  df2Flatten.show(false)
 
 
 
