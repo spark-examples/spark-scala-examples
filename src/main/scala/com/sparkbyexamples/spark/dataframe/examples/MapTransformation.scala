@@ -54,5 +54,5 @@ object MapTransformation extends App{
   val df4part = df4.toDF("fullName","id","salary")
   df4part.printSchema()
   df4part.show(false)
-
+  
 }
