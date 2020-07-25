@@ -70,7 +70,7 @@ object WindowFunctions extends App {
     .withColumn("sum", sum(col("salary")).over(windowSpecAgg))
     .withColumn("min", min(col("salary")).over(windowSpecAgg))
     .withColumn("max", max(col("salary")).over(windowSpecAgg))
-    .where(col("row")===1).select("department","avg","sum","min","max")
+   // .where(col("row")===1).select("department","avg","sum","min","max")
     .show()
 
 

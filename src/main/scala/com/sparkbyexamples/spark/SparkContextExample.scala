@@ -13,6 +13,7 @@ object SparkContextExample extends App{
 
   spark.sparkContext.setLogLevel("ERROR")
 
+
   val sparkContext:SparkContext = spark.sparkContext
   val sqlCon:SQLContext = spark.sqlContext
 
@@ -32,4 +33,6 @@ object SparkContextExample extends App{
   println("APP Name :"+sparkSession2.sparkContext.appName);
   println("Deploy Mode :"+sparkSession2.sparkContext.deployMode);
   println("Master :"+sparkSession2.sparkContext.master);
+
+
 }
