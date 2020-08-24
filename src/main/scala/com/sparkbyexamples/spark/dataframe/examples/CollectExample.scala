@@ -30,6 +30,7 @@ object CollectExample extends App {
   df.printSchema()
   df.show(false)
 
+  val colList = df.collectAsList()
   val colData = df.collect()
 
   colData.foreach(row=>

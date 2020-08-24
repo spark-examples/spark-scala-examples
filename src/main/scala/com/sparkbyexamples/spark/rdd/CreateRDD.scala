@@ -25,5 +25,7 @@ object CreateRDD {
     val myRdd2 = spark.range(20).toDF().rdd
     myRdd2.foreach(println)
 
+
+
   }
 }
