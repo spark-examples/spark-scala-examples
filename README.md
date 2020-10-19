@@ -48,6 +48,7 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
   
   
   ## Spark SQL Functions
+  
     - [Spark SQL String Functions Explained](https://sparkbyexamples.com/spark/usage-of-spark-sql-string-functions/)
     - [Spark SQL Date and Time Functions](https://sparkbyexamples.com/spark/spark-sql-date-and-time-functions/)
     - [Spark SQL Array functions complete list](https://sparkbyexamples.com/spark/spark-sql-array-functions/)
@@ -55,7 +56,7 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
     - [Spark SQL Sort functions – complete list](https://sparkbyexamples.com/spark/spark-sql-sort-functions/)
     - [Spark SQL Aggregate Functions](https://sparkbyexamples.com/spark/spark-sql-aggregate-functions/)
     - [Spark Window Functions with Examples](https://sparkbyexamples.com/spark/spark-sql-window-functions/)
-    - []()
-    - []()
+    
+    ## Spark Data Source API
     
   
