@@ -63,5 +63,20 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
    - [Spark Read XML file using Databricks API](https://sparkbyexamples.com/spark/spark-read-write-xml/)
    - [Read & Write Avro files using Spark DataFrame](https://sparkbyexamples.com/spark/read-write-avro-file-spark-dataframe/)
    - [Using Avro Data Files From Spark SQL 2.3.x or earlier](https://sparkbyexamples.com/spark/using-avro-data-files-from-spark-sql-2-3-x/)
+   - [Spark Read from & Write to HBase table | Example](https://sparkbyexamples.com/spark/spark-read-write-using-hbase-spark-connector/)
+   - [Create Spark DataFrame from HBase using Hortonworks](https://sparkbyexamples.com/spark/create-spark-dataframe-from-hbase-using-hortonworks/)
+   - [Spark Read ORC file into DataFrame](https://sparkbyexamples.com/spark/spark-read-orc-file-into-dataframe/)
+   - [Spark 3.0 Read Binary File into DataFrame](https://sparkbyexamples.com/spark/spark-read-binary-file-into-dataframe/)
+   
+   ## Spark Streaming & Kafka
+   - [Spark Streaming – Different Output modes explained](https://sparkbyexamples.com/spark/spark-streaming-outputmode/)
+   - [Spark Streaming files from a directory](https://sparkbyexamples.com/spark/spark-streaming-read-json-files-from-directory/)
+   - [Spark Streaming – Reading data from TCP Socket](https://sparkbyexamples.com/spark/spark-streaming-from-tcp-socket/)
+   - [Spark Streaming with Kafka Example](https://sparkbyexamples.com/spark/spark-streaming-with-kafka/)
+   - [Spark Streaming – Kafka messages in Avro format](https://sparkbyexamples.com/spark/spark-streaming-consume-and-produce-kafka-messages-in-avro-format/)
+   - [Spark SQL Batch Processing – Produce and Consume Apache Kafka Topic](https://sparkbyexamples.com/spark/spark-batch-processing-produce-consume-kafka-topic/)
+   
+   
+   
     
   
