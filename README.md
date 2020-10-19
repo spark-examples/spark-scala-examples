@@ -39,5 +39,10 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
   - [Spark map vs mapPartitions transformation](https://sparkbyexamples.com/spark/spark-map-vs-mappartitions-transformation/)
   - [Spark foreachPartition vs foreach | what to use?](https://sparkbyexamples.com/spark/spark-foreachpartition-vs-foreach-explained/)
   - [Spark DataFrame Cache and Persist Explained](https://sparkbyexamples.com/spark/spark-dataframe-cache-and-persist-explained/)
-  - []()
+  - [Spark SQL UDF (User Defined Functions)](https://sparkbyexamples.com/spark/spark-sql-udf/)
+  - [Spark SQL DataFrame Array (ArrayType) Column](https://sparkbyexamples.com/spark/spark-array-arraytype-dataframe-column/)
+  - [Working with Spark DataFrame Map (MapType) column](https://sparkbyexamples.com/spark/spark-dataframe-map-maptype-column/)
+  - [Spark SQL – Flatten Nested Struct column](https://sparkbyexamples.com/spark/spark-flatten-nested-struct-column/)
+  - [Spark – Flatten nested array to single array column](https://sparkbyexamples.com/spark/spark-flatten-nested-array-column-to-single-column/)
+  - [Spark explode array and map columns to rows](https://sparkbyexamples.com/spark/explode-spark-array-and-map-dataframe-column/)
   
