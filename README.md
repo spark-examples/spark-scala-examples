@@ -46,3 +46,16 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
   - [Spark – Flatten nested array to single array column](https://sparkbyexamples.com/spark/spark-flatten-nested-array-column-to-single-column/)
   - [Spark explode array and map columns to rows](https://sparkbyexamples.com/spark/explode-spark-array-and-map-dataframe-column/)
   
+  
+  ## Spark SQL Functions
+    - [Spark SQL String Functions Explained](https://sparkbyexamples.com/spark/usage-of-spark-sql-string-functions/)
+    - [Spark SQL Date and Time Functions](https://sparkbyexamples.com/spark/spark-sql-date-and-time-functions/)
+    - [Spark SQL Array functions complete list](https://sparkbyexamples.com/spark/spark-sql-array-functions/)
+    - [Spark SQL Map functions – complete list](https://sparkbyexamples.com/spark/spark-sql-map-functions/)
+    - [Spark SQL Sort functions – complete list](https://sparkbyexamples.com/spark/spark-sql-sort-functions/)
+    - [Spark SQL Aggregate Functions](https://sparkbyexamples.com/spark/spark-sql-aggregate-functions/)
+    - [Spark Window Functions with Examples](https://sparkbyexamples.com/spark/spark-sql-window-functions/)
+    - []()
+    - []()
+    
+  
