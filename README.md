@@ -56,6 +56,12 @@ Explanation of all Spark SQL, RDD, DataFrame and Dataset examples present on thi
   - [Spark SQL Aggregate Functions](https://sparkbyexamples.com/spark/spark-sql-aggregate-functions/)
   - [Spark Window Functions with Examples](https://sparkbyexamples.com/spark/spark-sql-window-functions/)
     
-    ## Spark Data Source API
+   ## Spark Data Source API
+   - [Spark Read CSV file into DataFrame](https://sparkbyexamples.com/spark/spark-read-csv-file-into-dataframe/)
+   - [Spark Read and Write JSON file into DataFrame](https://sparkbyexamples.com/spark/spark-read-and-write-json-file/)
+   - [Spark Read and Write Apache Parquet](https://sparkbyexamples.com/spark/spark-read-write-dataframe-parquet-example/)
+   - [Spark Read XML file using Databricks API](https://sparkbyexamples.com/spark/spark-read-write-xml/)
+   - [Read & Write Avro files using Spark DataFrame](https://sparkbyexamples.com/spark/read-write-avro-file-spark-dataframe/)
+   - [Using Avro Data Files From Spark SQL 2.3.x or earlier](https://sparkbyexamples.com/spark/using-avro-data-files-from-spark-sql-2-3-x/)
     
   
