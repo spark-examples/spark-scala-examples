@@ -26,7 +26,6 @@ import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructT
       .emptyRDD[Row], schema)
 
     // Using implicit encoder
-
     Seq.empty[(String,String,String)].toDF(colSeq:_*)
 
     //Using case class

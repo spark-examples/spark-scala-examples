@@ -2,6 +2,7 @@ package com.sparkbyexamples.spark.dataframe.functions.datetime
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.IntegerType
 
 object DateAddMonths extends App {
 
@@ -30,4 +31,19 @@ object DateAddMonths extends App {
     date_sub(to_date(col("Date"),"MM-dd-yyyy"),3).as("date_sub")
   ).show()
 
+//  Seq(("2019-01-23",1),("2019-06-24",2),("2019-09-20",3)).toDF("date","increment").select(
+//    col("date"),
+//  add_months(to_date(col("date"),"yyyy-MM-dd"),col("increment").cast(IntegerType).).as("date_inc")
+//  ).show()
+
+  Seq(("2019-01-23",1),("2019-06-24",2),("2019-09-20",3))
+    .toDF("date","increment")
+    .select(col("date"),col("increment"),
+      expr("add_months(to_date(date,'yyyy-MM-dd'),cast(increment as int))").as("inc_date"))
+    .show()
+
+  Seq(("2019-01-23",1),("2019-06-24",2),("2019-09-20",3))
+    .toDF("date","increment")
+    .selectExpr("date","increment","add_months(to_date(date,'yyyy-MM-dd'),cast(increment as int)) as inc_date")
+    .show()
 }

@@ -13,11 +13,21 @@ object ForEachPartExample extends App {
     ("Orange",2000,"USA"),("Orange",2000,"USA"),("Banana",400,"China"),
     ("Carrots",1200,"China"),("Beans",1500,"China"))
 
-  //DataFrame
+  // foreachPartition DataFrame
   val df = spark.createDataFrame(data).toDF("Product","Amount","Country")
-  df.foreachPartition(f=> println(f))
+  df.foreachPartition(partition => {
+    //Initialize any database connection
+    partition.foreach(fun=>{
+      //apply the function
+    })
+  })
 
   //rdd
   val rdd = spark.sparkContext.parallelize(Seq(1,2,3,4,5,6,7,8,9))
-  rdd.foreachPartition(print)
+  rdd.foreachPartition(partition => {
+    //Initialize any database connection
+    partition.foreach(fun=>{
+      //apply the function
+    })
+  })
 }

@@ -26,8 +26,9 @@ object CreateDataFrame {
 
     //From RDD (USING createDataFrame and Adding schema using StructType)
     //convert RDD[T] to RDD[Row]
-    val schema = StructType(columns
-      .map(fieldName => StructField(fieldName, StringType, nullable = true)))
+    val schema = StructType( Array(StructField("language", StringType,  true),
+                             StructField("language", StringType,  true)))
+
     val rowRDD = rdd.map(attributes => Row(attributes._1, attributes._2))
     val dfFromRDD3 = spark.createDataFrame(rowRDD,schema)
 
