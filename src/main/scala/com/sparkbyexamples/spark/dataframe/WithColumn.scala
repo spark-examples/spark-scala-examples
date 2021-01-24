@@ -1,7 +1,7 @@
 package com.sparkbyexamples.spark.dataframe
 
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.types.{ArrayType, IntegerType, MapType, StringType, StructType}
+import org.apache.spark.sql.types.{StringType, StructType}
 import org.apache.spark.sql.functions._
 object WithColumn {
 
@@ -12,27 +12,23 @@ object WithColumn {
       .appName("SparkByExamples.com")
       .getOrCreate()
 
-    val arrayStructureData = Seq(
-      Row(Row("James ","","Smith"),"1","M",3100,List("Cricket","Movies"),Map("hair"->"black","eye"->"brown")),
-      Row(Row("Michael ","Rose",""),"2","M",3100,List("Tennis"),Map("hair"->"brown","eye"->"black")),
-      Row(Row("Robert ","","Williams"),"3","M",3100,List("Cooking","Football"),Map("hair"->"red","eye"->"gray")),
-      Row(Row("Maria ","Anne","Jones"),"4","M",3100,null,Map("hair"->"blond","eye"->"red")),
-      Row(Row("Jen","Mary","Brown"),"5","M",3100,List("Blogging"),Map("white"->"black","eye"->"black"))
+    val dataRows = Seq(Row(Row("James;","","Smith"),"36636","M","3000"),
+      Row(Row("Michael","Rose",""),"40288","M","4000"),
+      Row(Row("Robert","","Williams"),"42114","M","4000"),
+      Row(Row("Maria","Anne","Jones"),"39192","F","4000"),
+      Row(Row("Jen","Mary","Brown"),"","F","-1")
     )
 
-    val arrayStructureSchema = new StructType()
+    val schema = new StructType()
       .add("name",new StructType()
         .add("firstname",StringType)
         .add("middlename",StringType)
         .add("lastname",StringType))
-      .add("id",StringType)
+      .add("dob",StringType)
       .add("gender",StringType)
-      .add("salary",IntegerType)
-      .add("Hobbies", ArrayType(StringType))
-      .add("properties", MapType(StringType,StringType))
+      .add("salary",StringType)
 
-    val df2 = spark.createDataFrame(
-      spark.sparkContext.parallelize(arrayStructureData),arrayStructureSchema)
+    val df2 = spark.createDataFrame(spark.sparkContext.parallelize(dataRows),schema)
 
     //Change the column data type
     df2.withColumn("salary",df2("salary").cast("Integer"))
@@ -62,10 +58,6 @@ object WithColumn {
     df2.select("name.firstname").show(false)
     df2.select("name.*").show(false)
 
-
-    val df8 = df2.select(col("*"),explode(col("hobbies")))
-    df8.show(false)
-
     import spark.implicits._
 
     val columns = Seq("name","address")
@@ -81,5 +73,9 @@ object WithColumn {
     val finalDF = newDF.toDF("First Name","Last Name","Address Line1","City","State","zipCode")
     finalDF.printSchema()
     finalDF.show(false)
+
+    df2.createOrReplaceTempView("PERSON")
+    spark.sql("SELECT salary*100 as salary, salary*-1 as CopiedColumn, 'USA' as country FROM PERSON").show()
   }
+
 }
