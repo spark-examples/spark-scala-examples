@@ -21,7 +21,7 @@ object ReadORCFile extends App{
     .orc("/tmp/orc/data.orc")
 
   df.write.mode("overwrite")
-    .option("compression","none12")
+    .option("compression","none")
     .orc("/tmp/orc/data-nocomp.orc")
 
   df.write.mode("overwrite")
