@@ -13,8 +13,10 @@ object SaveSingleFile extends App{
     .appName("SparkByExamples.com")
     .getOrCreate()
 
-  val df = spark.read.option("header",true).csv("src/main/resources/address.csv")
-  df.repartition(1).write.mode(SaveMode.Overwrite).csv("/tmp/address")
+  val df = spark.read.option("header",true)
+    .csv("src/main/resources/address.csv")
+  df.repartition(1)
+    .write.mode(SaveMode.Overwrite).csv("/tmp/address")
 
 
   val hadoopConfig = new Configuration()
@@ -22,7 +24,8 @@ object SaveSingleFile extends App{
 
   val srcPath=new Path("/tmp/address")
   val destPath= new Path("/tmp/address_merged.csv")
-  val srcFile=FileUtil.listFiles(new File("c:/tmp/address")).filterNot(f=>f.getPath.endsWith(".csv"))(0)
+  val srcFile=FileUtil.listFiles(new File("c:/tmp/address"))
+    .filterNot(f=>f.getPath.endsWith(".csv"))(0)
   //Copy the CSV file outside of Directory and rename
   FileUtil.copy(srcFile,hdfs,destPath,true,hadoopConfig)
   //Remove Directory created by df.write()
@@ -31,10 +34,12 @@ object SaveSingleFile extends App{
   hdfs.delete(new Path("/tmp/.address_merged.csv.crc"),true)
 
   // Merge Using Haddop API
-  df.repartition(1).write.mode(SaveMode.Overwrite).csv("/tmp/address-tmp")
+  df.repartition(1).write.mode(SaveMode.Overwrite)
+    .csv("/tmp/address-tmp")
   val srcFilePath=new Path("/tmp/address-tmp")
   val destFilePath= new Path("/tmp/address_merged2.csv")
   FileUtil.copyMerge(hdfs, srcFilePath, hdfs, destFilePath, true, hadoopConfig, null)
   //Remove hidden CRC file if not needed.
   hdfs.delete(new Path("/tmp/.address_merged2.csv.crc"),true)
+
 }

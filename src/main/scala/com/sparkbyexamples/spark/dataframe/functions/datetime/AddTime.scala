@@ -1,7 +1,7 @@
 package com.sparkbyexamples.spark.dataframe.functions.datetime
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions.{expr,col}
+import org.apache.spark.sql.functions._
 object AddTime extends App {
 
   val spark:SparkSession = SparkSession.builder()

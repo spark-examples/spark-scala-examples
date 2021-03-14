@@ -66,12 +66,10 @@ object WindowFunctions extends App {
   //Aggregate Functions
   val windowSpecAgg  = Window.partitionBy("department")
   val aggDF = df.withColumn("row",row_number.over(windowSpec))
-  .withColumn("avg", avg(col("salary")).over(windowSpecAgg))
+    .withColumn("avg", avg(col("salary")).over(windowSpecAgg))
     .withColumn("sum", sum(col("salary")).over(windowSpecAgg))
     .withColumn("min", min(col("salary")).over(windowSpecAgg))
     .withColumn("max", max(col("salary")).over(windowSpecAgg))
-   // .where(col("row")===1).select("department","avg","sum","min","max")
+    .where(col("row")===1).select("department","avg","sum","min","max")
     .show()
-
-
 }
