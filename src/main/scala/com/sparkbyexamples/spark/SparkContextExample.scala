@@ -10,7 +10,7 @@ object SparkContextExample extends App{
 
   val spark = SparkSession.builder()
     .master("local[1]")
-    .appName("SparkByExamples.com")
+    .appName("SparkByExajjmples.com")
     .getOrCreate();
 
   spark.sparkContext.setLogLevel("ERROR")
