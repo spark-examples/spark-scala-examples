@@ -24,6 +24,8 @@ object SparkContextExample extends App{
   println("Deploy Mode :"+spark.sparkContext.deployMode);
   println("Master :"+spark.sparkContext.master);
 
+  val df = spark.read.csv("src/main/resources/data.csv")
+  df.show()
   val sparkSession2 = SparkSession.builder()
     .master("local[1]")
     .appName("SparkByExample-test")
