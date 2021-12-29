@@ -39,9 +39,10 @@ object SparkContextExample extends App{
   {
     val x = row.mkString(",").split(",")(0)
     val y = row.mkString(",").split(",")(1)
-    print(x,y)
-
-  }
+    val newX= (x.toDouble-col_minX.toDouble)/(col_maxX.toDouble-col_minX.toDouble) //min max normalization type
+    val newY= (y.toDouble-col_minY.toDouble)/(col_maxY.toDouble-col_minY.toDouble)
+    
+}
 
 
 }
