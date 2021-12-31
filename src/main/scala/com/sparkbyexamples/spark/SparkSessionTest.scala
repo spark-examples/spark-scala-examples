@@ -1,31 +1,55 @@
-package com.sparkbyexamples.spark
+//package org.apache.spark.examples.mllib
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.{SparkConf, SparkContext}
+// $example on$
+import org.apache.spark.mllib.clustering.{KMeans, KMeansModel}
+import org.apache.spark.mllib.linalg.Vectors
 
-object SparkSessionTest {
+object kmeansExample {
+  def main(args: Array[String]): Unit = {
 
-  def main(args:Array[String]): Unit ={
+    println("***********************************************************************************************")
+    println("***********************************************************************************************")
+
+    println("Hello, Spark!")
+
+    println("***********************************************************************************************")
+    println("***********************************************************************************************")
+
+    val conf = new SparkConf()
+      .setMaster("local[2]")
+      .setAppName("KMeansExample")
+    val sc = new SparkContext(conf)
+
+    // $example on$
+    // Load and parse the data
+    val data = sc.textFile("part10K.txt")
+    val parsedData = data.map(s => Vectors.dense(s.split(' ').map(_.toDouble))).cache()
 
 
-    val spark = SparkSession.builder()
-      .master("local[1]")
-      .appName("SparkByExample")
-      .getOrCreate();
+    println("***********************************************************************************************")
+    println("***********************************************************************************************")
 
-    println("First SparkContext:")
-    println("APP Name :"+spark.sparkContext.appName);
-    println("Deploy Mode :"+spark.sparkContext.deployMode);
-    println("Master :"+spark.sparkContext.master);
+    println("Hello, Spark! Just read the file!")
 
-    val sparkSession2 = SparkSession.builder()
-      .master("local[1]")
-      .appName("SparkByExample-test")
-      .getOrCreate();
+    println("***********************************************************************************************")
+    println("***********************************************************************************************")
 
-    println("Second SparkContext:")
-    println("APP Name :"+sparkSession2.sparkContext.appName);
-    println("Deploy Mode :"+sparkSession2.sparkContext.deployMode);
-    println("Master :"+sparkSession2.sparkContext.master);
+    // Cluster the data into two classes using KMeans
+    val numClusters = 2
+    val numIterations = 20
+    val clusters = KMeans.train(parsedData, numClusters, numIterations)
 
+    // Evaluate clustering by computing Within Set Sum of Squared Errors
+    val WSSSE = clusters.computeCost(parsedData)
+    println("Within Set Sum of Squared Errors = $" +WSSSE)
+
+    // Save and load model
+    //clusters.save(sc, "KMeansModel")
+    //val sameModel = KMeansModel.load(sc, "KMeansModel")
+    // $example off$
+
+    println("***********************************************************************************************")
+    sc.stop()
   }
 }
