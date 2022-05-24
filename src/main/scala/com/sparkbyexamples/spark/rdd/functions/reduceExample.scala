@@ -13,9 +13,9 @@ object reduceExample extends App {
 
   val listRdd = spark.sparkContext.parallelize(List(1,2,3,4,5,3,2))
 
-  println("output sum using binary : "+listRdd.reduce(_ min _))
-  println("output min using binary : "+listRdd.reduce(_ max _))
-  println("output max using binary : "+listRdd.reduce(_ + _))
+  println("output min using binary : "+listRdd.reduce(_ min _))
+  println("output max using binary : "+listRdd.reduce(_ max _))
+  println("output sum using binary : "+listRdd.reduce(_ + _))
 
 
   // Alternatively you can write
@@ -27,7 +27,7 @@ object reduceExample extends App {
   val inputRDD = spark.sparkContext.parallelize(List(("Z", 1),("A", 20),("B", 30),
     ("C", 40),("B", 30),("B", 60)))
 
-  println("output max : "+inputRDD.reduce( (a,b)=> ("max",a._2 min b._2))._2)
+  println("output min : "+inputRDD.reduce( (a,b)=> ("max",a._2 min b._2))._2)
   println("output max : "+inputRDD.reduce( (a,b)=> ("max",a._2 max b._2))._2)
   println("output sum : "+inputRDD.reduce( (a,b)=> ("Sum",a._2 + b._2))._2)
 }
