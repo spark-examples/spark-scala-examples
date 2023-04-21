@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <properties>
         <scala.version>2.12.12</scala.version>
-        <spark.version>3.0.0</spark.version>
+        <spark.version>3.4.0</spark.version>
     </properties>
 
     <repositories>
