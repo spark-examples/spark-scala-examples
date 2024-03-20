@@ -2,7 +2,7 @@ package com.sparkbyexamples.spark.spark30
 
 import org.apache.spark.sql.SparkSession
 
-object ADQExample extends App{
+object AQEExample extends App{
 
   val spark: SparkSession = SparkSession.builder()
     .master("local[5]")
@@ -25,12 +25,11 @@ object ADQExample extends App{
   val df = simpleData.toDF("employee_name","department","state","salary","age","bonus")
 
   val df1=df.groupBy("department").count()
-  println(df1.rdd.getNumPartitions)
 
-  spark.conf.set("spark.sql.adaptive.enabled",200)
+  println(s"Number of partitions in RDD (AQE=[${spark.conf.get("spark.sql.adaptive.enabled")}]) = [${df1.rdd.getNumPartitions}]")
+
+  spark.conf.set("spark.sql.adaptive.enabled", true)
+
   val df2=df.groupBy("department").count()
-  println(df2.rdd.getNumPartitions)
-
-
-
+  println(s"Number of partitions in RDD (AQE=[${spark.conf.get("spark.sql.adaptive.enabled")}]) = [${df2.rdd.getNumPartitions}]")
 }
