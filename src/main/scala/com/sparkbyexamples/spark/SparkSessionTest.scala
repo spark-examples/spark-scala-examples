@@ -1,31 +1,49 @@
-package com.sparkbyexamples.spark
 
-import org.apache.spark.sql.SparkSession
+package org.apache.spark.examples.mllib
 
-object SparkSessionTest {
+import org.apache.spark.{SparkConf, SparkContext}
+// $example on$
+import org.apache.spark.mllib.clustering.{KMeans}
+import org.apache.spark.mllib.linalg.Vectors
 
-  def main(args:Array[String]): Unit ={
+object kmeansExample {
+  def main(args: Array[String]): Unit = {
+
+    val conf = new SparkConf()
+      .setMaster("local[2]")
+      .setAppName("KMeansExample")
+    val sc = new SparkContext(conf)
+
+    // $example on$
+    // Load and parse the data
+    val data = sc.textFile("src/main/resources/newData.txt")
+    val parsedData = data.map(s => Vectors.dense(s.split(' ').map(_.toDouble))).cache()
 
 
-    val spark = SparkSession.builder()
-      .master("local[1]")
-      .appName("SparkByExample")
-      .getOrCreate();
-    
-    println("First SparkContext:")
-    println("APP Name :"+spark.sparkContext.appName);
-    println("Deploy Mode :"+spark.sparkContext.deployMode);
-    println("Master :"+spark.sparkContext.master);
+    println("***********************************************************************************************")
+    println("***********************************************************************************************")
 
-    val sparkSession2 = SparkSession.builder()
-      .master("local[1]")
-      .appName("SparkByExample-test")
-      .getOrCreate();
+    println("Hello, Spark! Just read the file!")
 
-    println("Second SparkContext:")
-    println("APP Name :"+sparkSession2.sparkContext.appName);
-    println("Deploy Mode :"+sparkSession2.sparkContext.deployMode);
-    println("Master :"+sparkSession2.sparkContext.master);
+    println("***********************************************************************************************")
+    println("***********************************************************************************************")
 
+    // Cluster the data into two classes using KMeans
+    val numClusters = 2
+    val numIterations = 20
+    val clusters = KMeans.train(parsedData, numClusters, numIterations)
+
+    // Evaluate clustering by computing Within Set Sum of Squared Errors
+    val WSSSE = clusters.computeCost(parsedData)
+    println("Within Set Sum of Squared Errors = $" +WSSSE)
+
+    // Save and load model
+    //clusters.save(sc, "KMeansModel")
+    //val sameModel = KMeansModel.load(sc, "KMeansModel")
+    // $example off$
+
+    println("***********************************************************************************************")
+    sc.stop()
   }
 }
+=
